@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MeterPro | Login</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #e8f1ff, #f3fff8);
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px 24px;
+  background: rgba(255,255,255,0.96);
+  border-radius: 28px;
+  box-shadow: 0 15px 45px rgba(20,60,100,0.14);
+}
+
+.logo {
+  width: 86px;
+  height: 86px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #0757b8, #13b968);
+  color: white;
+  font-size: 44px;
+  box-shadow: 0 8px 20px rgba(7,87,184,0.25);
+}
+
+.brand {
+  text-align: center;
+  font-size: 31px;
+  font-weight: 800;
+  color: #14386b;
+  margin-top: 16px;
+}
+
+.brand span {
+  color: #10a957;
+}
+
+.tagline {
+  text-align: center;
+  color: #7a8798;
+  font-size: 13px;
+  margin-top: 7px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #193b6b;
+  font-size: 23px;
+  margin-bottom: 22px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #34445b;
+  margin: 16px 0 8px;
+}
+
+.input-box {
+  position: relative;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #d7e1ed;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  background: #fbfdff;
+}
+
+input:focus {
+  border-color: #0878e8;
+  box-shadow: 0 0 0 3px rgba(8,120,232,0.09);
+}
+
+.show-btn {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  border: none;
+  background: transparent;
+  color: #0878e8;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 28px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #086fe0, #0751ad);
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+}
+
+#message {
+  text-align: center;
+  font-size: 13px;
+  margin-top: 18px;
+  color: #d97706;
+  line-height: 1.5;
+}
+
+.footer {
+  text-align: center;
+  color: #8793a4;
+  font-size: 11px;
+  margin-top: 25px;
+}
+
+.security {
+  text-align: center;
+  color: #10a957;
+  font-size: 12px;
+  margin-top: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="logo">⚡</div>
+
+  <div class="brand">
+    Meter<span>Pro</span>
+  </div>
+
+  <p class="tagline">
+    Smart Electricity Meter Reading
+  </p>
+
+  <h2>Welcome Back 👋</h2>
+
+  <form id="loginForm">
+
+    <label for="readerId">Reader ID / मोबाइल नंबर</label>
+    <input
+      type="text"
+      id="readerId"
+      placeholder="अपना Reader ID दर्ज करें"
+      autocomplete="username"
+      required
+    >
+
+    <label for="password">Password</label>
+
+    <div class="input-box">
+      <input
+        type="password"
+        id="password"
+        placeholder="अपना Password दर्ज करें"
+        autocomplete="current-password"
+        required
+      >
+
+      <button
+        type="button"
+        class="show-btn"
+        id="showPassword"
+      >
+        SHOW
+      </button>
+    </div>
+
+    <button type="submit" class="login-btn">
+      LOGIN करें →
+    </button>
+
+  </form>
+
+  <p id="message"></p>
+
+  <p class="security">
+    🔒 Secure Reading Platform
+  </p>
+
+  <p class="footer">
+    MeterPro © 2026 | Version 1.0
+  </p>
+
+</div>
+
+<script>
+const passwordInput = document.getElementById("password");
+const showPassword = document.getElementById("showPassword");
+const loginForm = document.getElementById("loginForm");
+const message = document.getElementById("message");
+
+showPassword.addEventListener("click", function() {
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    showPassword.textContent = "HIDE";
+  } else {
+    passwordInput.type = "password";
+    showPassword.textContent = "SHOW";
+  }
+});
+
+loginForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const readerId = document.getElementById("readerId").value.trim();
+  const password = passwordInput.value.trim();
+
+  if (!readerId || !password) {
+    message.textContent = "कृपया Reader ID और Password भरें।";
+    return;
+  }
+
+  message.textContent =
+    "यह Demo Login है। वास्तविक Login के लिए सुरक्षित Backend आवश्यक है।";
+});
+</script>
+
+</body>
+</html>
